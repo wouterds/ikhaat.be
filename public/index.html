@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
+    <title>Ik haat ..</title>
+    <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600' rel='stylesheet' type='text/css'>
+    <style type="text/css">
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    ::-moz-selection {
+        color: #FFF;
+        background: #ADD5B3;
+    }
+
+    ::selection {
+        color: #FFF;
+        background: #ADD5B3;
+    }
+
+    body, html, #wrapper {
+        height: 100%;
+    }
+
+    body {
+        font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+        font-size: 62.5%;
+    }
+
+    #wrapper {
+        background: #FFF;
+        display: table;
+        width: 100%;
+        position: relative;
+        font-size: 1.4em;
+        padding: 0 25px;
+        box-sizing: border-box;
+    }
+
+    div.social {
+        position: absolute;
+        right: 10px;
+        bottom: 10px;
+        display: inline-block;
+    }
+
+    div.social iframe, div.social div {
+        vertical-align: top;
+        display: inline-block;
+    }
+
+    div.middle-container {
+        vertical-align: middle;
+        text-align: center;
+        display: table-cell;
+    }
+
+    div.middle-container div.middle {
+        font-weight: 300;
+        color: #333;
+    }
+
+    #image, input {
+        max-width: 568px;
+        width: 100%;
+        border-radius: 3px;
+        overflow: hidden;
+    }
+
+    input {
+        outline: 0;
+        border: none;
+        background: none;
+        font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+        font-size: 1.4em;
+        font-weight: 300;
+        display: inline-block;
+        padding: 5px;
+        box-sizing: border-box;
+        margin: 10px 0;
+        text-align: center;
+    }
+
+    input {
+        color: #AAA;
+        border: 1px solid #FFF;
+    }
+
+    #url, input:focus {
+        color: #839299;
+        border: 1px solid #B3C0C6;
+    }
+
+    #url {
+        font-weight: 500;
+        font-size: 1.1em;
+    }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <div class="middle-container">
+            <div class="middle">
+
+                <input id="input" type="text" placeholder="ik haat alles!" autocomplete="off" autofocus />
+                <br />
+                <img id="image" src="https://ikhaat.be/Ik%20haat%20alles!.jpg" alt="ik haat alles!" />
+                <br>
+                <input id="url" type="text" value="https://ikhaat.be/ik%20haat%20iedereen%20en%20alles!.jpg" readonly="readonly" />
+
+            </div>
+        </div>
+    </div>
+
+    <div class="social">
+        <a href="https://twitter.com/share" class="twitter-share-button" data-via="WouterDS" data-hashtags="ikhaat" data-url="https://ikhaat.be/">Tweet</a>
+        <div class="fb-like" data-colorscheme="light" data-href="https://ikhaat.be/" data-layout="button_count" data-action="like" data-show-faces="false" data-send="false"></div>
+    </div>
+
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript">
+    var $input = $("#input");
+    var $urlInput = $('#url');
+    var $img = $("#image");
+
+    $input.keyup(function(e) {
+        var val = $input.val();
+
+        if (val.length == 0) {
+            val = "ik haat alles!";
+        }
+
+        var url = 'https://ikhaat.be/' + encodeURI(val) + '.jpg';
+        $img.attr('src', url);
+        $img.attr('alt', val);
+        $urlInput.val(url);
+    });
+
+    $urlInput.click(function() {
+        $(this).select();
+    });
+    </script>
+    <script type="text/javascript">!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+    <script type="text/javascript">(function(e,t,n){var r,i=e.getElementsByTagName(t)[0];if(e.getElementById(n))return;r=e.createElement(t);r.id=n;r.src="//connect.facebook.net/en_GB/all.js#xfbml=1&appId=194585970708202";i.parentNode.insertBefore(r,i)})(document,"script","facebook-jssdk")</script>
+</body>
+</html>

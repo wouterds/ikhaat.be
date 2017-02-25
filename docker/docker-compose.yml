@@ -1,0 +1,19 @@
+version: '2'
+
+services:
+  nginx:
+    image: docker.wouterdeschuyter.be/internal-ikhaat-website-nginx
+    restart: unless-stopped
+    environment:
+      - LETSENCRYPT_EMAIL=wouter@wouterdeschuyter.be
+    networks:
+      - default
+      - nginxproxy_default
+
+  php-fpm:
+    image: docker.wouterdeschuyter.be/internal-ikhaat-website-php-fpm
+    restart: unless-stopped
+
+networks:
+  nginxproxy_default:
+    external: true
