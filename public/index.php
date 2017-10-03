@@ -1,8 +1,8 @@
 <?php
 
-// Application directory
 use Wouterds\IkHaat\Application\Http\Application;
 
+// Application directory
 define('APP_DIR', dirname(__DIR__));
 
 // Include composer autoloader
