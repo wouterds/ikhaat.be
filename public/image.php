@@ -34,11 +34,11 @@ function wrap($fontSize, $fontFace, $string, $width){
     return $ret;
 }
 
-$img = loadJpgFromFile('../media/images/ik-haat-wandelen.jpg');
+$img = loadJpgFromFile('../resources/assets/images/ik-haat-wandelen.jpg');
 
 if(isset($_GET['text']) && !empty($_GET['text'])) {
     $t = substr(strtoupper($_GET['text']), 0, 55);
-    $f = '../media/fonts/Primrose.ttf';
+    $f = '../resources/assets/fonts/Primrose.ttf';
     $fs = 20;
     $c = imagecolorallocate($img, 35, 35, 35);
 
