@@ -2,18 +2,14 @@ version: '2'
 
 services:
   nginx:
-    image: nginx:alpine
-    restart: unless-stopped
+    image: nginx:1.13-alpine
     ports:
       - "80:80"
     volumes:
-      - ./..:/code
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
-    depends_on:
-      - php-fpm
+      - ./..:/code
 
   php-fpm:
     build: php-fpm
-    restart: unless-stopped
     volumes:
-      - ./../:/code
+      - ./..:/code

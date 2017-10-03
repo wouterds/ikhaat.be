@@ -1,4 +1,4 @@
-FROM php:fpm-alpine
+FROM php:7.1-fpm-alpine
 MAINTAINER Wouter De Schuyter <wouter.de.schuyter@gmail.com>
 
 # Install GD extension
