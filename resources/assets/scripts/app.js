@@ -1,20 +1,41 @@
-var $input = $("#input");
-var $urlInput = $('#url');
-var $img = $("#image");
+const $wrapper = $('#wrapper');
 
-$input.keyup(function(e) {
-  var val = $input.val();
+class App {
+  constructor($scope) {
+    this.$scope = $scope;
 
-  if (val.length == 0) {
-    val = "ik haat alles!";
+    this.init();
+    this.initObservers();
   }
 
-  var url = location.protocol + '//' + location.host + '/' + encodeURI(val) + '.jpg';
-  $img.attr('src', url);
-  $img.attr('alt', val);
-  $urlInput.val(url);
-});
+  init() {
+    this.$input = this.$scope.find("#input");
+    this.$image = this.$scope.find("#image");
+    this.$urlInput = this.$scope.find('#urlInput');
+  }
 
-$urlInput.click(function() {
-  $(this).select();
-});
+  initObservers() {
+    this.$input.on('keyup', ::this.inputOnKeyup);
+    this.$urlInput.on('click', ::this.urlInputClick);
+  }
+
+  inputOnKeyup(e) {
+    let val = this.$input.val();
+
+    if (val.length === 0) {
+      val = 'Ik haat alles!';
+    }
+
+    let url = location.protocol + '//' + location.host + '/' + encodeURI(val) + '.jpg';
+
+    this.$image.attr('src', url);
+    this.$image.attr('alt', val);
+    this.$urlInput.val(url);
+  }
+
+  urlInputClick(e) {
+    this.$urlInput.select();
+  }
+}
+
+new App($wrapper);
