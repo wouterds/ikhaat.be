@@ -7,9 +7,6 @@ use Wouterds\IkHaat\Application\Container;
 
 class Application extends App
 {
-    /**
-     * Application constructor
-     */
     public function __construct()
     {
         parent::__construct(Container::load());
