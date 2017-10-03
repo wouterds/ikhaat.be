@@ -21,5 +21,8 @@
     "league/container": "^2.4",
     "slim/slim": "^3.8",
     "twig/twig": "^2.4"
+  },
+  "require-dev": {
+    "symfony/var-dumper": "^3.3"
   }
 }
