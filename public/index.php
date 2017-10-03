@@ -2,6 +2,7 @@
 
 use Wouterds\IkHaat\Application\Container;
 use Wouterds\IkHaat\Application\Http\Application;
+use Wouterds\IkHaat\Infrastructure\View\Twig;
 
 // Application directory
 define('APP_DIR', dirname(__DIR__));
@@ -13,7 +14,7 @@ require_once (APP_DIR . '/vendor/autoload.php');
 $container = Container::load();
 
 // Init http app
-$app = new Application();
+$app = new Application($container->get(Twig::class));
 
 // Run http app
 $app->run();

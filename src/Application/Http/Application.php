@@ -2,24 +2,19 @@
 
 namespace Wouterds\IkHaat\Application\Http;
 
-use Twig_Environment;
-use Twig_Loader_Filesystem;
 
-class Application {
-    /**
-     * @var Twig_Loader_Filesystem
-     */
-    private $loader;
+use Wouterds\IkHaat\Infrastructure\View\Twig;
 
+class Application
+{
     /**
-     * @var Twig_Environment
+     * @var Twig
      */
     private $twig;
 
-    public function __construct()
+    public function __construct(Twig $twig)
     {
-        $this->loader = new Twig_Loader_Filesystem(APP_DIR . '/resources/views');
-        $this->twig = new Twig_Environment($this->loader);
+        $this->twig = $twig;
     }
 
     public function run()
