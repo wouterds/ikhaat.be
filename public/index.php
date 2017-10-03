@@ -14,7 +14,7 @@ require_once (APP_DIR . '/vendor/autoload.php');
 $container = Container::load();
 
 // Init http app
-$app = new Application($container->get(Twig::class));
+$app = new Application();
 
 // Run http app
 $app->run();

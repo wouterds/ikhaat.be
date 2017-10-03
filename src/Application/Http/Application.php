@@ -2,23 +2,27 @@
 
 namespace Wouterds\IkHaat\Application\Http;
 
+use Slim\App;
+use Wouterds\IkHaat\Application\Container;
 
-use Wouterds\IkHaat\Infrastructure\View\Twig;
-
-class Application
+class Application extends App
 {
     /**
-     * @var Twig
+     * Application constructor
      */
-    private $twig;
-
-    public function __construct(Twig $twig)
+    public function __construct()
     {
-        $this->twig = $twig;
+        parent::__construct(Container::load());
+
+        $this->loadRoutes();
     }
 
-    public function run()
+    /**
+     * Load routes
+     */
+    private function loadRoutes()
     {
-        echo $this->twig->render('index.html.twig');
+        $app = $this;
+        require __DIR__ . '/routes.php';
     }
 }
