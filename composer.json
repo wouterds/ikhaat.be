@@ -1,0 +1,22 @@
+{
+  "authors": [
+    {
+      "name": "Wouter De Schuyter",
+      "email": "wouter.de.schuyter@gmail.com"
+    }
+  ],
+  "version": "2.0.0-alpha",
+  "config": {
+    "sort-packages": true,
+    "optimize-autoloader": true
+  },
+  "autoload": {
+    "psr-4": {
+      "Wouterds\\IkHaat\\": "src",
+      "Wouterds\\IkHaat\\Tests\\": "tests"
+    }
+  },
+  "require": {
+    "twig/twig": "^2.4"
+  }
+}
