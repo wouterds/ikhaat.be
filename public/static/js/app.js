@@ -9,7 +9,7 @@ $input.keyup(function(e) {
     val = "ik haat alles!";
   }
 
-  var url = 'https://ikhaat.be/' + encodeURI(val) + '.jpg';
+  var url = location.protocol + '//' + location.host + '/' + encodeURI(val) + '.jpg';
   $img.attr('src', url);
   $img.attr('alt', val);
   $urlInput.val(url);
