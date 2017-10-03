@@ -13,7 +13,7 @@ services:
       - php-fpm
 
   php-fpm:
-    image: php:fpm-alpine
+    build: php-fpm
     restart: unless-stopped
     volumes:
       - ./../:/code
