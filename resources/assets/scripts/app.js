@@ -26,6 +26,8 @@ class App {
       val = 'Ik haat alles!';
     }
 
+    val = val.toLowerCase();
+
     let url = location.protocol + '//' + location.host + '/' + encodeURIComponent(val) + '.jpg';
 
     this.$image.attr('src', url);
