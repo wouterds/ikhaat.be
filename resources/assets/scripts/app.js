@@ -9,6 +9,7 @@ class App {
   }
 
   init() {
+    this.APP_URL = this.$scope.data('app-url');
     this.$input = this.$scope.find("#input");
     this.$image = this.$scope.find("#image");
     this.$urlInput = this.$scope.find('#urlInput');
@@ -28,7 +29,7 @@ class App {
 
     val = val.toLowerCase();
 
-    let url = location.protocol + '//' + location.host + '/' + encodeURIComponent(val) + '.jpg';
+    let url = this.APP_URL + '/' + encodeURIComponent(val) + '.jpg';
 
     this.$image.attr('src', url);
     this.$image.attr('alt', val);

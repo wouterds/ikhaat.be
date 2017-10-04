@@ -24,6 +24,7 @@ class HomeHandler extends ViewHandler
     {
         return $this->render($response, [
             'title' => getenv('APP_NAME'),
+            'url' => getenv('APP_URL'),
         ]);
     }
 }
