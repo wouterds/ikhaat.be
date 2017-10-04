@@ -1,6 +1,6 @@
 all: tag
 
-VERSION = 1.0.0
+VERSION = $(shell cat package.json | grep "version" | sed -e 's/^.*: "\(.*\)".*/\1/')
 PWD = $(shell pwd)
 
 DOCKER_REPO  = docker.wouterdeschuyter.be
