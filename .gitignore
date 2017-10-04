@@ -1,4 +1,5 @@
 /.build-*
+/.env
 /public/static
 /vendor
 /composer.phar
