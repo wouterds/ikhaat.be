@@ -5,7 +5,7 @@ services:
     image: docker.wouterdeschuyter.be/internal-ikhaat-website-nginx
     restart: unless-stopped
     environment:
-      - LETSENCRYPT_EMAIL=wouter@wouterdeschuyter.be
+      - LETSENCRYPT_EMAIL=wouter.de.schuyter@gmail.com
     networks:
       - default
       - nginxproxy_default
