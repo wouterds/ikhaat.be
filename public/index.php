@@ -1,6 +1,5 @@
 <?php
 
-use Wouterds\KabouterWesley\Application\Container;
 use Wouterds\KabouterWesley\Application\Http\Application;
 
 // Application directory
