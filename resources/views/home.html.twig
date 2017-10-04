@@ -3,26 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Kabouter Wesley - Ik haat alles!</title>
+    <title>{{ title }}</title>
     <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600">
     <link rel="stylesheet" type="text/css" href="/static/css/app.css">
 </head>
 <body>
-<div id="wrapper">
+<div id="wrapper" data-app-url="{{ url }}">
     <div class="middle-container">
         <div class="middle">
             <input id="input" type="text" placeholder="ik haat alles!" autocomplete="off" autofocus />
             <br>
-            <img id="image" src="https://kabouterwesley.be/ik%20haat%20alles!.jpg" alt="ik haat alles!" />
+            <img id="image" src="{{ url }}/ik%20haat%20alles!.jpg" alt="ik haat alles!" />
             <br>
-            <input id="urlInput" type="text" value="https://kabouterwesley.be/ik%20haat%20iedereen%20en%20alles!.jpg" readonly="readonly" />
+            <input id="urlInput" type="text" value="{{ url }}/ik%20haat%20iedereen%20en%20alles!.jpg" readonly="readonly" />
         </div>
     </div>
 </div>
 
 <div class="social">
-    <a href="https://twitter.com/share" class="twitter-share-button" data-via="wouterds" data-hashtags="kabouterwesley" data-url="https://kabouterwesley.be/">Tweet</a>
-    <div class="fb-like" data-colorscheme="light" data-href="https://kabouterwesley.be/" data-layout="button_count" data-action="like" data-show-faces="false" data-send="false"></div>
+    <a href="https://twitter.com/share" class="twitter-share-button" data-via="wouterds" data-hashtags="kabouterwesley" data-url="{{ url }}/">Tweet</a>
+    <div class="fb-like" data-colorscheme="light" data-href="{{ url }}/" data-layout="button_count" data-action="like" data-show-faces="false" data-send="false"></div>
 </div>
 
 <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>

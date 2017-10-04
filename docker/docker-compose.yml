@@ -4,6 +4,8 @@ services:
   nginx:
     image: docker.wouterdeschuyter.be/internal-kabouterwesley-website-nginx
     restart: unless-stopped
+    env_file:
+      - ./.env
     environment:
       - LETSENCRYPT_EMAIL=wouter.de.schuyter@gmail.com
     networks:
@@ -13,6 +15,8 @@ services:
   php-fpm:
     image: docker.wouterdeschuyter.be/internal-kabouterwesley-website-php-fpm
     restart: unless-stopped
+    env_file:
+      - ./.env
 
 networks:
   nginxproxy_default:
