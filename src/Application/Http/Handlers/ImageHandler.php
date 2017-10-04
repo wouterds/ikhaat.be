@@ -2,7 +2,6 @@
 
 namespace Wouterds\IkHaat\Application\Http\Handlers;
 
-use Psr\Http\Message\ServerRequestInterface;
 use Slim\Http\Request;
 use Slim\Http\Response;
 
