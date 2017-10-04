@@ -1,10 +1,10 @@
 <?php
 
-namespace Wouterds\IkHaat\Application\Http\Handlers;
+namespace Wouterds\KabouterWesley\Application\Http\Handlers;
 
 use Slim\Http\Request;
 use Slim\Http\Response;
-use Wouterds\IkHaat\Infrastructure\View\Twig;
+use Wouterds\KabouterWesley\Infrastructure\View\Twig;
 
 abstract class ViewHandler implements View
 {

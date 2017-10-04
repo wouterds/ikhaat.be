@@ -2,7 +2,7 @@ version: '2'
 
 services:
   nginx:
-    image: docker.wouterdeschuyter.be/internal-ikhaat-website-nginx
+    image: docker.wouterdeschuyter.be/internal-kabouterwesley-website-nginx
     restart: unless-stopped
     environment:
       - LETSENCRYPT_EMAIL=wouter.de.schuyter@gmail.com
@@ -11,7 +11,7 @@ services:
       - nginxproxy_default
 
   php-fpm:
-    image: docker.wouterdeschuyter.be/internal-ikhaat-website-php-fpm
+    image: docker.wouterdeschuyter.be/internal-kabouterwesley-website-php-fpm
     restart: unless-stopped
 
 networks:

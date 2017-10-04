@@ -1,9 +1,9 @@
 <?php
 
-namespace Wouterds\IkHaat\Application\Http;
+namespace Wouterds\KabouterWesley\Application\Http;
 
 use Slim\App;
-use Wouterds\IkHaat\Application\Container;
+use Wouterds\KabouterWesley\Application\Container;
 
 class Application extends App
 {

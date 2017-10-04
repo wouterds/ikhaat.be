@@ -1,6 +1,6 @@
 <?php
 
-namespace Wouterds\IkHaat\Application\Http\Handlers;
+namespace Wouterds\KabouterWesley\Application\Http\Handlers;
 
 use Slim\Http\Response;
 

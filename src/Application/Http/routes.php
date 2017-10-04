@@ -1,8 +1,8 @@
 <?php
 
-use Wouterds\IkHaat\Application\Http\Application;
-use Wouterds\IkHaat\Application\Http\Handlers\HomeHandler;
-use Wouterds\IkHaat\Application\Http\Handlers\ImageHandler;
+use Wouterds\KabouterWesley\Application\Http\Application;
+use Wouterds\KabouterWesley\Application\Http\Handlers\HomeHandler;
+use Wouterds\KabouterWesley\Application\Http\Handlers\ImageHandler;
 
 /** @var Application $app */
 

@@ -12,8 +12,8 @@
   },
   "autoload": {
     "psr-4": {
-      "Wouterds\\IkHaat\\": "src",
-      "Wouterds\\IkHaat\\Tests\\": "tests"
+      "Wouterds\\KabouterWesley\\": "src",
+      "Wouterds\\KabouterWesley\\Tests\\": "tests"
     }
   },
   "require": {

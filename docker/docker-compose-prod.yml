@@ -3,5 +3,5 @@ version: '2'
 services:
   nginx:
     environment:
-      - VIRTUAL_HOST=ikhaat.be
-      - LETSENCRYPT_HOST=ikhaat.be
+      - VIRTUAL_HOST=kabouterwesley.be
+      - LETSENCRYPT_HOST=kabouterwesley.be

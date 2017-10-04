@@ -1,6 +1,6 @@
 <?php
 
-namespace Wouterds\IkHaat\Infrastructure\View;
+namespace Wouterds\KabouterWesley\Infrastructure\View;
 
 use League\Container\ServiceProvider\AbstractServiceProvider;
 use Twig_Loader_Filesystem;

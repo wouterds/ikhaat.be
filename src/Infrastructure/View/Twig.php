@@ -1,6 +1,6 @@
 <?php
 
-namespace Wouterds\IkHaat\Infrastructure\View;
+namespace Wouterds\KabouterWesley\Infrastructure\View;
 
 use Slim\Http\Response;
 use Twig_Environment;

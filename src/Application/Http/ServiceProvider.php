@@ -1,6 +1,6 @@
 <?php
 
-namespace Wouterds\IkHaat\Application\Http;
+namespace Wouterds\KabouterWesley\Application\Http;
 
 use Jenssegers\Lean\SlimServiceProvider;
 

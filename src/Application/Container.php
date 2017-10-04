@@ -1,11 +1,11 @@
 <?php
 
-namespace Wouterds\IkHaat\Application;
+namespace Wouterds\KabouterWesley\Application;
 
 use League\Container\Container as LeagueContainer;
 use League\Container\ReflectionContainer;
-use Wouterds\IkHaat\Application\Http\ServiceProvider as HttpServiceProvider;
-use Wouterds\IkHaat\Infrastructure\View\ServiceProvider as ViewServiceProvider;
+use Wouterds\KabouterWesley\Application\Http\ServiceProvider as HttpServiceProvider;
+use Wouterds\KabouterWesley\Infrastructure\View\ServiceProvider as ViewServiceProvider;
 
 class Container extends LeagueContainer
 {

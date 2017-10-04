@@ -1,7 +1,7 @@
 import static Constants.*
 
 class Constants {
-  static final REPO = 'internal-ikhaat-website'
+  static final REPO = 'internal-kabouterwesley-website'
   static final DOCKER_FOLDER = '~/docker/projects/' + REPO
   static final SERVER = 'server03.wouterdeschuyter.be'
 }

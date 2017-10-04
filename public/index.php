@@ -1,7 +1,7 @@
 <?php
 
-use Wouterds\IkHaat\Application\Container;
-use Wouterds\IkHaat\Application\Http\Application;
+use Wouterds\KabouterWesley\Application\Container;
+use Wouterds\KabouterWesley\Application\Http\Application;
 
 // Application directory
 define('APP_DIR', dirname(__DIR__));
