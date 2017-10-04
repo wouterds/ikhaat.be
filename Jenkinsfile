@@ -16,6 +16,10 @@ node {
     sh 'make clean'
   }
 
+  stage('Dependencies') {
+    sh 'make dependencies'
+  }
+
   stage('Build') {
     sh 'make build'
   }
