@@ -2,7 +2,6 @@
 
 use Wouterds\IkHaat\Application\Container;
 use Wouterds\IkHaat\Application\Http\Application;
-use Wouterds\IkHaat\Infrastructure\View\Twig;
 
 // Application directory
 define('APP_DIR', dirname(__DIR__));
