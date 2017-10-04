@@ -26,7 +26,7 @@ class App {
       val = 'Ik haat alles!';
     }
 
-    let url = location.protocol + '//' + location.host + '/' + encodeURI(val) + '.jpg';
+    let url = location.protocol + '//' + location.host + '/' + encodeURIComponent(val) + '.jpg';
 
     this.$image.attr('src', url);
     this.$image.attr('alt', val);
