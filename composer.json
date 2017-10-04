@@ -1,11 +1,13 @@
 {
+  "name": "kabouterwesley-website",
+  "description": "kabouterwesley.be website",
+  "version": "2.0.1",
   "authors": [
     {
       "name": "Wouter De Schuyter",
       "email": "wouter.de.schuyter@gmail.com"
     }
   ],
-  "version": "2.0.1",
   "config": {
     "sort-packages": true,
     "optimize-autoloader": true
