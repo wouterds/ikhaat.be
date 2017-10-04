@@ -51,7 +51,11 @@ class ImageHandler
         return $response->withHeader('Content-Type', 'image/jpeg');
     }
 
-    private function loadJpgFromFile($path)
+    /**
+     * @param string $path
+     * @return resource
+     */
+    private function loadJpgFromFile(string $path)
     {
         $img = @imagecreatefromjpeg($path);
 
@@ -69,6 +73,13 @@ class ImageHandler
         return $img;
     }
 
+    /**
+     * @param int $fontSize
+     * @param string $fontFace
+     * @param string $text
+     * @param int $maxWidth
+     * @return string
+     */
     private function wrap(int $fontSize, string $fontFace, string $text, int $maxWidth): string
     {
         // Split words by space
