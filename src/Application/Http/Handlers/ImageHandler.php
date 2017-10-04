@@ -26,7 +26,7 @@ class ImageHandler
 
         $img = $this->loadJpgFromFile(self::IMAGE);
 
-        if(isset($content) && !empty($content)) {
+        if (isset($content) && !empty($content)) {
             $t = substr(strtoupper($content), 0, 55);
             $f = self::FONT;
             $fs = 20;
@@ -69,21 +69,24 @@ class ImageHandler
         return $img;
     }
 
-    private function wrap($fontSize, $fontFace, $string, $width)
+    private function wrap(int $fontSize, string $fontFace, string $text, int $maxWidth): string
     {
-        $ret = "";
-        $arr = explode(' ', $string);
+        // Split words by space
+        $words = explode(' ', $text);
 
-        foreach ( $arr as $word ){
-            $teststring = $ret.' '.$word;
-            $testbox = imagettfbbox($fontSize, 0, $fontFace, $teststring);
-            if ( $testbox[2] > $width ){
-                $ret.=($ret==""?"":"\n").$word;
-            } else {
-                $ret.=($ret==""?"":' ').$word;
+        $wrappedText = '';
+        foreach ($words as $word ) {
+            $testText = $wrappedText . ' ' . $word;
+            $testBox = imagettfbbox($fontSize, 0, $fontFace, $testText);
+
+            if ($testBox[2] > $maxWidth ) {
+                $wrappedText .= (empty($wrappedText) ?  '' : PHP_EOL) . $word;
+                continue;
             }
+
+            $wrappedText .= (empty($wrappedText) ?  '' : ' ') . $word;
         }
 
-        return $ret;
+        return $wrappedText;
     }
 }
