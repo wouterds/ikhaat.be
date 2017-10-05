@@ -10,40 +10,53 @@ import imagemin from 'gulp-imagemin';
 // Paths
 const paths = {
   dist: {
+    images: './public/static/img',
     styles: './public/static/css',
     scripts: './public/static/js',
-    images: './public/static/img',
+    scriptsVendor: './public/static/js/vendor',
   },
   resources: {
+    images: './resources/assets/images',
     styles: './resources/assets/styles',
     scripts: './resources/assets/scripts',
-    images: './resources/assets/images',
+    scriptsVendor: './node_modules',
   },
 };
 
 // Src files
 const src = {
+  images: `${paths.resources.images}/**/**.{svg,png,jpg,gif}`,
   styles: `${paths.resources.styles}/**/**.scss`,
   scripts: `${paths.resources.scripts}/**/**.js`,
-  images: `${paths.resources.images}/**/**.{svg,png,jpg,gif}`,
+  scriptsVendor: [
+    `${paths.resources.scriptsVendor}/jquery/dist/jquery.js`,
+  ],
 };
 
 class TaskRunner {
   constructor() {
     // Tasks
+    gulp.task('images', this.images);
     gulp.task('styles', this.styles);
     gulp.task('scripts', this.scripts);
-    gulp.task('images', this.images);
+    gulp.task('scripts:vendor', this.scriptsVendor);
 
     // Default task
-    gulp.task('default', ['styles', 'scripts', 'images']);
+    gulp.task('default', ['images', 'styles', 'scripts', 'scripts:vendor']);
 
     // Watch task
     gulp.task('watch', ['default'], () => {
+      gulp.watch(src.images, ['images']);
       gulp.watch(src.styles, ['styles']);
       gulp.watch(src.scripts, ['scripts']);
-      gulp.watch(src.images, ['images']);
+      gulp.watch(src.scriptsVendor, ['scripts:vendor']);
     });
+  }
+
+  images() {
+    return gulp.src(src.images)
+      .pipe(imagemin())
+      .pipe(gulp.dest(paths.dist.images));
   }
 
   styles() {
@@ -77,11 +90,14 @@ class TaskRunner {
       .pipe(gulp.dest(paths.dist.scripts));
   }
 
-  images() {
-    console.log(src.images);
-    return gulp.src(src.images)
-      .pipe(imagemin())
-      .pipe(gulp.dest(paths.dist.images));
+  scriptsVendor() {
+    return gulp.src(src.scriptsVendor)
+      .pipe(babel({
+        presets: [
+          "minify",
+        ]
+      }))
+      .pipe(gulp.dest(paths.dist.scriptsVendor));
   }
 }
 
