@@ -16,7 +16,8 @@ class App {
     this.APP_URL = this.$scope.data('app-url');
     this.$input = this.$scope.find("#input");
     this.$image = this.$scope.find("#image");
-    this.$urlInput = this.$scope.find('#urlInput');
+    this.$urlInputWrapper = this.$scope.find('#urlInputWrapper');
+    this.$urlInput = this.$urlInputWrapper.find('#urlInput');
   }
 
   initObjects() {
@@ -45,14 +46,32 @@ class App {
     this.$image.attr('src', url);
     this.$image.attr('alt', val);
     this.$urlInput.val(url);
+    this.$urlInputWrapper.removeClass('copied-to-clipboard');
+    this.removeCopiedNotice();
   }
 
   urlInputClick(e) {
+    if (Clipboard.isSupported()) {
+      return;
+    }
+
     this.$urlInput.select();
   }
 
   clipboardSuccess(e) {
-    alert('Copied!');
+    this.$urlInputWrapper.addClass('copied-to-clipboard');
+    this.removeCopiedNoticeTimer = setTimeout(::this.removeCopiedNotice, 5000);
+  }
+
+  removeCopiedNotice() {
+    this.$urlInput.blur();
+    this.$urlInputWrapper.removeClass('copied-to-clipboard');
+
+    if (this.removeCopiedNoticeTimer) {
+      clearTimeout(this.removeCopiedNoticeTimer);
+    }
+
+    this.removeCopiedNoticeTimer = null;
   }
 }
 
