@@ -93,11 +93,6 @@ class TaskRunner {
 
   scriptsVendor() {
     return gulp.src(src.scriptsVendor)
-      .pipe(babel({
-        presets: [
-          "minify",
-        ]
-      }))
       .pipe(gulp.dest(paths.dist.scriptsVendor));
   }
 }
