@@ -6,6 +6,9 @@ class App {
 
     this.init();
     this.initObservers();
+
+    // Trigger input once to pre-fill url input
+    this.$input.trigger('keyup');
   }
 
   init() {
@@ -23,8 +26,10 @@ class App {
   inputOnKeyup(e) {
     let val = this.$input.val();
 
+    // No value?
     if (val.length === 0) {
-      val = 'Ik haat alles!';
+      // Use the one from the placeholder!
+      val = this.$input.attr('placeholder');
     }
 
     val = val.toLowerCase();
