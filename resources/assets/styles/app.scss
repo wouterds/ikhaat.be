@@ -1,10 +1,5 @@
 @import "_reset.scss";
 
-::selection {
-  color: #FFF;
-  background: #ADD5B3;
-}
-
 body,
 html,
 #wrapper {
@@ -67,11 +62,15 @@ div.middle-container {
   }
 }
 
+::placeholder {
+  color: #aaa;
+}
+
 #image,
 input {
   max-width: 568px;
   width: 100%;
-  border-radius: 3px;
+  border-radius: 2px;
   overflow: hidden;
 }
 
@@ -79,24 +78,29 @@ input {
   outline: 0;
   background: none;
   font-family: inherit;
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: 300;
   display: inline-block;
   padding: 5px;
   box-sizing: border-box;
   margin: 10px 0;
   text-align: center;
-  color: #AAA;
-  border: 1px solid #FFF;
+  color: #999;
+  border: 1px solid #e0e0e0;
 }
 
-#url {
-  font-weight: 500;
-  font-size: 1.1em;
-}
-
-#url,
 input:focus {
-  color: #839299;
+  color: #888;
   border: 1px solid #B3C0C6;
+}
+
+.url-input {
+  &:focus {
+    border-color: #1563C8;
+  }
+
+  &::selection {
+    background: #1563C8;
+    color: #fff;
+  }
 }
