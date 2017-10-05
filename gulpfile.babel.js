@@ -30,6 +30,7 @@ const src = {
   scripts: `${paths.resources.scripts}/**/**.js`,
   scriptsVendor: [
     `${paths.resources.scriptsVendor}/jquery/dist/jquery.js`,
+    `${paths.resources.scriptsVendor}/clipboard/dist/clipboard.js`,
   ],
 };
 
