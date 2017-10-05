@@ -13,10 +13,24 @@ html,
 
 body {
   font-family: Helvetica, Arial, sans-serif;
+  background: url('../img/backgrounds/low-poly-landscape-white-tree.jpg') center center no-repeat;
+  background-size: cover;
+  position: relative;
+
+  &:before {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    background: url('../img/backgrounds/pixel.png') top left repeat;
+    background-size: 2px;
+    opacity: 0.25;
+  }
 }
 
-#wrapper {
-  background: #FFF;
+.wrapper {
   display: table;
   width: 100%;
   position: relative;
@@ -44,6 +58,10 @@ div.middle-container {
   display: table-cell;
 
   div.middle {
+    background: #fff;
+    padding: 25px;
+    display: inline-block;
+    border-radius: 10px;
     font-weight: 300;
     color: #333;
   }
