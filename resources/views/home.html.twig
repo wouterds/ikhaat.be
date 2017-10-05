@@ -10,7 +10,7 @@
                 <br>
                 <img id="image" src="{{ url }}/ik%20haat%20alles!.jpg" alt="ik haat alles!">
                 <br>
-                <input id="urlInput" class="url-input" type="text" readonly="readonly">
+                <input id="urlInput" class="url-input" type="text" readonly="readonly" data-clipboard-target="#urlInput">
             </div>
         </div>
     </div>
@@ -22,5 +22,6 @@
 {% endblock %}
 
 {% block scripts_first %}
-<script type="text/javascript" src="/static/js/vendor/jquery.js"></script>
+<script type="text/javascript" src="/static/js/vendor/jquery.min.js"></script>
+<script type="text/javascript" src="/static/js/vendor/clipboard.min.js"></script>
 {% endblock %}

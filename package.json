@@ -4,6 +4,7 @@
   "version": "2.2.1",
   "author": "Wouter De Schuyter <wouter.de.schuyter@gmail.com>",
   "dependencies": {
+    "clipboard": "^1.7.1",
     "jquery": "^3.2.1"
   },
   "devDependencies": {

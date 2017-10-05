@@ -29,7 +29,8 @@ const src = {
   styles: `${paths.resources.styles}/**/**.scss`,
   scripts: `${paths.resources.scripts}/**/**.js`,
   scriptsVendor: [
-    `${paths.resources.scriptsVendor}/jquery/dist/jquery.js`,
+    `${paths.resources.scriptsVendor}/jquery/dist/jquery.min.js`,
+    `${paths.resources.scriptsVendor}/clipboard/dist/clipboard.min.js`,
   ],
 };
 
@@ -92,11 +93,6 @@ class TaskRunner {
 
   scriptsVendor() {
     return gulp.src(src.scriptsVendor)
-      .pipe(babel({
-        presets: [
-          "minify",
-        ]
-      }))
       .pipe(gulp.dest(paths.dist.scriptsVendor));
   }
 }
