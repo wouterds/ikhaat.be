@@ -29,12 +29,12 @@ vendor: composer.phar composer.json composer.lock
 	docker run --rm --volume=$(PWD):/code -w=/code php:7.1-alpine php ./composer.phar install --ignore-platform-reqs --prefer-dist --no-progress --optimize-autoloader
 
 node_modules: package.json package-lock.json
-	docker run --rm --volume=$(PWD):/code -w=/code node:8-alpine npm install
+	docker run --rm --volume=$(PWD):/code -w=/code node:8-slim npm install
 
 dependencies: vendor node_modules
 
 .build-app: dependencies
-	docker run --rm --volume=$(PWD):/code -w=/code node:8-alpine ./node_modules/.bin/gulp
+	docker run --rm --volume=$(PWD):/code -w=/code node:8-slim ./node_modules/.bin/gulp
 	touch .build-app
 
 .build-nginx: $(DOCKERFILE_NGINX)
