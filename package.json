@@ -1,7 +1,7 @@
 {
   "name": "kabouterwesley-website",
   "description": "kabouterwesley.be website",
-  "version": "2.2.1",
+  "version": "2.2.2",
   "author": "Wouter De Schuyter <wouter.de.schuyter@gmail.com>",
   "dependencies": {
     "clipboard": "^1.7.1",
