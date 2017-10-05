@@ -29,8 +29,8 @@ const src = {
   styles: `${paths.resources.styles}/**/**.scss`,
   scripts: `${paths.resources.scripts}/**/**.js`,
   scriptsVendor: [
-    `${paths.resources.scriptsVendor}/jquery/dist/jquery.js`,
-    `${paths.resources.scriptsVendor}/clipboard/dist/clipboard.js`,
+    `${paths.resources.scriptsVendor}/jquery/dist/jquery.min.js`,
+    `${paths.resources.scriptsVendor}/clipboard/dist/clipboard.min.js`,
   ],
 };
 
