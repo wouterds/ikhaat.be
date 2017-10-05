@@ -3,7 +3,9 @@
   "description": "kabouterwesley.be website",
   "version": "2.2.1",
   "author": "Wouter De Schuyter <wouter.de.schuyter@gmail.com>",
-  "dependencies": {},
+  "dependencies": {
+    "jquery": "^3.2.1"
+  },
   "devDependencies": {
     "autoprefixer": "^7.1.4",
     "babel": "^6.23.0",
