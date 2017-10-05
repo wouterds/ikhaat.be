@@ -5,6 +5,7 @@ class App {
     this.$scope = $scope;
 
     this.init();
+    this.initObjects();
     this.initObservers();
 
     // Trigger input once to pre-fill url input
@@ -18,9 +19,14 @@ class App {
     this.$urlInput = this.$scope.find('#urlInput');
   }
 
+  initObjects() {
+    this.clipboard = new Clipboard(this.$urlInput.get(0));
+  }
+
   initObservers() {
     this.$input.on('keyup', ::this.inputOnKeyup);
     this.$urlInput.on('click', ::this.urlInputClick);
+    this.clipboard.on('success', ::this.clipboardSuccess);
   }
 
   inputOnKeyup(e) {
@@ -43,6 +49,10 @@ class App {
 
   urlInputClick(e) {
     this.$urlInput.select();
+  }
+
+  clipboardSuccess(e) {
+    alert('Copied!');
   }
 }
 
