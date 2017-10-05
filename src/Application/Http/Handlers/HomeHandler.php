@@ -24,6 +24,8 @@ class HomeHandler extends ViewHandler
     {
         return $this->render($response, [
             'title' => getenv('APP_NAME'),
+            'description' => getenv('APP_DESCRIPTION'),
+            'twitterAccount' => getenv('TWITTER_ACCOUNT'),
             'url' => getenv('APP_URL'),
         ]);
     }
