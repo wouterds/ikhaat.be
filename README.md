@@ -1,6 +1,6 @@
 # kabouterwesley.be
 
-Source code of [kabouterwesley.be](https://kabouterwesley.be), formerly [ikhaat.be](https://ikhaat.be)
+Source code of [kabouterwesley.be](https://kabouterwesley.be), formerly [ikhaat.be](https://ikhaat.be).
 
 ## Setup
 
