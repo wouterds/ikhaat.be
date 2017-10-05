@@ -13,10 +13,12 @@ html,
 
 body {
   font-family: Helvetica, Arial, sans-serif;
+  background: url('../img/backgrounds/low-poly-landscape-white-tree.jpg') center center no-repeat;
+  background-size: cover;
+  position: relative;
 }
 
-#wrapper {
-  background: #FFF;
+.wrapper {
   display: table;
   width: 100%;
   position: relative;
@@ -44,6 +46,10 @@ div.middle-container {
   display: table-cell;
 
   div.middle {
+    background: #fff;
+    padding: 25px;
+    display: inline-block;
+    border-radius: 10px;
     font-weight: 300;
     color: #333;
   }
