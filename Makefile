@@ -28,7 +28,7 @@ composer.phar:
 vendor: composer.phar composer.json composer.lock
 	docker run --rm --volume=$(PWD):/code -w=/code php:7.1-alpine php ./composer.phar install --ignore-platform-reqs --prefer-dist --no-progress --optimize-autoloader
 
-node_modules: package.json package-lock.json
+node_modules: package.json
 	docker run --rm --volume=$(PWD):/code -w=/code node:8-slim npm install
 
 dependencies: vendor node_modules
