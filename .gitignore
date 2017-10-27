@@ -3,3 +3,4 @@
 /public/static
 /vendor
 /composer.phar
+/package-lock.json
