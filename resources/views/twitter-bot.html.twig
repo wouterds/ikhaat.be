@@ -1,0 +1,25 @@
+{% extends '_base.html.twig' %}
+
+{% block twitterTitle %}{{ title }}{% endblock %}
+{% block twitterDescription %}{{ content }}{% endblock %}
+{% block twitterAccount %}{{ twitterAccount }}{% endblock %}
+{% block twitterImage %}{{ twitterImage }}{% endblock %}
+{% block twitterUrl %}{{ url }}/{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block body %}
+    <div id="wrapper" class="wrapper" data-app-url="{{ url }}">
+        <div class="middle-container">
+            <div class="middle">
+                <div class="image-wrapper" >
+                    <img id="image" class="image" src="{{ twitterImage }}?fi=1" alt="{{ content }}">
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block githubCorner %}{% endblock %}
+{% block scripts_first %}{% endblock %}
+{% block scripts %}{% endblock %}
+{% block scripts_last %}{% endblock %}
