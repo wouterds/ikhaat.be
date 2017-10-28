@@ -33,7 +33,7 @@ class TwitterBotImageHandler extends ViewHandler
             'title' => $content . ' - ' . getenv('APP_BASE_NAME'),
             'content' => $content,
             'twitterAccount' => getenv('TWITTER_ACCOUNT'),
-            'twitterImage' => getenv('APP_URL') . $request->getUri()->getPath(),
+            'twitterImage' => getenv('APP_URL') . $request->getUri()->getPath() . '?fi=1',
             'url' => getenv('APP_URL'),
         ]);
     }
