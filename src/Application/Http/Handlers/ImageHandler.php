@@ -13,6 +13,7 @@ class ImageHandler
     /**
      * @param Request $request
      * @param Response $response
+     * @param string $text
      * @return Response
      */
     public function __invoke(Request $request, Response $response, string $text): Response
