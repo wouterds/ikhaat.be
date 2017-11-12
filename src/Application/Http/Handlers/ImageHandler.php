@@ -15,19 +15,12 @@ class ImageHandler
      * @param Response $response
      * @return Response
      */
-    public function __invoke(Request $request, Response $response): Response
+    public function __invoke(Request $request, Response $response, string $text): Response
     {
-        // BUG: We should be able to get this from attributes
-        $content = $request->getUri()->getPath();
-        $content = explode('.jpg', $content);
-        $content = reset($content);
-        $content = substr($content, 1, strlen($content) - 1);
-        $content = urldecode($content);
-
         $img = $this->loadJpgFromFile(self::IMAGE);
 
-        if (isset($content) && !empty($content)) {
-            $t = substr(strtoupper($content), 0, 55);
+        if (!empty($text)) {
+            $t = substr(strtoupper($text), 0, 55);
             $f = self::FONT;
             $fs = 20;
             $c = imagecolorallocate($img, 35, 35, 35);
