@@ -14,4 +14,7 @@ RUN apk add --no-cache \
     && apk del freetype-dev libpng-dev libjpeg-turbo-dev
 
 # Copy project
-COPY ./ /code
+COPY ./public/index.php /code/public/index.php
+COPY ./src /code/src
+COPY ./resources /code/resources
+COPY ./vendor /code/vendor
