@@ -1,18 +1,18 @@
-# kabouterwesley.be
+# ikhaat.be
 
-Source code of [kabouterwesley.be](https://kabouterwesley.be), formerly [ikhaat.be](https://ikhaat.be).
+Source code of [ikhaat.be](https://ikhaat.be), formerly [kabouterwesley.be](https://kabouterwesley.be).
 
 ## Setup
 
 Add an entry to your `/etc/hosts` file:
 
 ```shell
-127.0.0.1 kabouterwesley.dev
+127.0.0.1 ikhaat.dev
 ```
 
 ### Environment variables
 
-Copy the `.env.example` file and adjust the hostname to `kabouterwesley.dev`
+Copy the `.env.example` file and adjust the hostname to `ikhaat.dev`
 
 ```shell
 cp .env.example .env
