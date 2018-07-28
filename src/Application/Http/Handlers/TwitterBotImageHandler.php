@@ -30,7 +30,7 @@ class TwitterBotImageHandler extends ViewHandler
         $content = urldecode($content);
 
         return $this->render($response, [
-            'title' => $content . ' - ' . getenv('APP_BASE_NAME'),
+            'title' => $content . ' - ' . getenv('APP_NAME'),
             'content' => $content,
             'twitterAccount' => getenv('TWITTER_ACCOUNT'),
             'twitterImage' => getenv('APP_URL') . $request->getUri()->getPath() . '?fi=1',
