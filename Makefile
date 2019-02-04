@@ -3,11 +3,10 @@ all: tag
 VERSION = $(shell cat package.json | grep "version" | sed -e 's/^.*: "\(.*\)".*/\1/')
 PWD = $(shell pwd)
 
-DOCKER_REPO  = docker.wouterdeschuyter.be
 PROJECT_NAME = internal-ikhaat-website
 
-TAG_NGINX = $(DOCKER_REPO)/$(PROJECT_NAME)-nginx
-TAG_PHP_FPM = $(DOCKER_REPO)/$(PROJECT_NAME)-php-fpm
+TAG_NGINX = $(DOCKER_REGISTRY_HOST)/$(PROJECT_NAME)-nginx
+TAG_PHP_FPM = $(DOCKER_REGISTRY_HOST)/$(PROJECT_NAME)-php-fpm
 
 DOCKERFILE_NGINX = ./docker/nginx/Dockerfile
 DOCKERFILE_PHP_FPM = ./docker/php-fpm/Dockerfile
