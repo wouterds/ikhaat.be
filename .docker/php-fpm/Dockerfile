@@ -1,5 +1,5 @@
 FROM arm32v6/php:7.2-fpm-alpine
-MAINTAINER Wouter De Schuyter <wouter.de.schuyter@gmail.com>
+LABEL maintainer="Wouter De Schuyter <wouter.de.schuyter@gmail.com>"
 
 # Install GD extension
 RUN apk add --no-cache \
