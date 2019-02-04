@@ -57,5 +57,5 @@ Included Docker services:
 Just start Docker like this (add the `-d` flag to run in background):
 
 ```shell
-docker-compose -f docker/docker-compose-dev.yml up
+docker-compose -f ./.docker/docker-compose-dev.yml up
 ```

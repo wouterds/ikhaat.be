@@ -57,9 +57,9 @@ def deployProduction() {
   sh 'ssh wouterds@'+SERVER+' "mkdir -p '+folder+'"'
 
   // Copy our docker files to the server, in case it has changed
-  sh 'scp docker/docker-compose.yml wouterds@'+SERVER+':'+folder+'/docker-compose.yml'
-  sh 'scp docker/docker-compose-prod.yml wouterds@'+SERVER+':'+folder+'/docker-compose-prod.yml'
-  sh 'scp .env.example wouterds@'+SERVER+':'+folder+'/.env'
+  sh 'scp ./.docker/docker-compose.yml wouterds@'+SERVER+':'+folder+'/docker-compose.yml'
+  sh 'scp ./.docker/docker-compose-prod.yml wouterds@'+SERVER+':'+folder+'/docker-compose-prod.yml'
+  sh 'scp ./.env.example wouterds@'+SERVER+':'+folder+'/.env'
 
   // Deploy on staging
   sh 'ssh wouterds@'+SERVER+' "cd '+folder+'; docker-compose -f docker-compose.yml -f docker-compose-prod.yml pull"'

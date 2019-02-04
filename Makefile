@@ -8,8 +8,8 @@ PROJECT_NAME = ikhaat-website
 TAG_NGINX = $(DOCKER_REGISTRY_HOST)/$(PROJECT_NAME)-nginx
 TAG_PHP_FPM = $(DOCKER_REGISTRY_HOST)/$(PROJECT_NAME)-php-fpm
 
-DOCKERFILE_NGINX = ./docker/nginx/Dockerfile
-DOCKERFILE_PHP_FPM = ./docker/php-fpm/Dockerfile
+DOCKERFILE_NGINX = ./.docker/nginx/Dockerfile
+DOCKERFILE_PHP_FPM = ./.docker/php-fpm/Dockerfile
 
 clean:
 	-rm -rf ./.version
