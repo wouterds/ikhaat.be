@@ -2,7 +2,7 @@ version: '2'
 
 services:
   nginx:
-    image: nginx:1.13-alpine
+    image: nginx:1.15-alpine
     env_file:
       - ./../.env
     ports:
