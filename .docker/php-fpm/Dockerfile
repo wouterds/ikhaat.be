@@ -1,4 +1,4 @@
-FROM arm32v6/php:7.2-fpm-alpine
+FROM arm32v6/php:7.3-fpm-alpine
 LABEL maintainer="Wouter De Schuyter <wouter.de.schuyter@gmail.com>"
 
 # Install GD extension
