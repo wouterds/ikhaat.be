@@ -1,8 +1,8 @@
 all: tag
 
-VERSION = $(shell cat package.json | grep "version" | sed -e 's/^.*: "\(.*\)".*/\1/')
 PWD = $(shell pwd)
 
+VERSION = 2.5.1
 PROJECT_NAME = ikhaat-website
 
 TAG_NGINX = $(DOCKER_REGISTRY_HOST)/$(PROJECT_NAME)-nginx
