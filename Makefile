@@ -3,7 +3,7 @@ all: tag
 VERSION = $(shell cat package.json | grep "version" | sed -e 's/^.*: "\(.*\)".*/\1/')
 PWD = $(shell pwd)
 
-PROJECT_NAME = internal-ikhaat-website
+PROJECT_NAME = ikhaat-website
 
 TAG_NGINX = $(DOCKER_REGISTRY_HOST)/$(PROJECT_NAME)-nginx
 TAG_PHP_FPM = $(DOCKER_REGISTRY_HOST)/$(PROJECT_NAME)-php-fpm
