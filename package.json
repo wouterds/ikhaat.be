@@ -1,6 +1,4 @@
 {
-  "name": "ikhaat-website",
-  "description": "ikhaat.be website",
   "author": "Wouter De Schuyter <wouter.de.schuyter@gmail.com>",
   "dependencies": {
     "clipboard": "^1.7.1",
