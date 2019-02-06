@@ -1,8 +1,10 @@
 {
   "author": "Wouter De Schuyter <wouter.de.schuyter@gmail.com>",
   "dependencies": {
-    "clipboard": "^1.7.1",
+    "clipboard": "^1.7.1"
   },
   "devDependencies": {
+    "webpack": "^4.29.1",
+    "webpack-cli": "^3.2.3"
   }
 }
