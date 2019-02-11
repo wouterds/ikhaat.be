@@ -1,5 +1,8 @@
 {
   "author": "Wouter De Schuyter <wouter.de.schuyter@gmail.com>",
+  "scripts": {
+    "build": "./node_modules/.bin/webpack -p"
+  },
   "dependencies": {
     "clipboard": "^1.7.1"
   },
