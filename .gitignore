@@ -4,3 +4,4 @@
 /vendor
 /composer.phar
 /package-lock.json
+/resources/views/_base.html.twig
