@@ -82,6 +82,7 @@ export default (_env, { mode }) => {
       noInfo: true,
       disableHostCheck: true,
     },
+    devtool: isProduction === false ? 'source-map' : undefined,
     plugins: [
       new HtmlWebpackPlugin({
         filename: resolve('./resources/views/_base.html.twig'),
