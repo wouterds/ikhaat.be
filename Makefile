@@ -2,7 +2,7 @@ all: tag
 
 PWD = $(shell pwd)
 
-VERSION = 2.5.1
+VERSION = 3.0.0
 PROJECT_NAME = ikhaat-website
 
 TAG_NGINX = $(DOCKER_REGISTRY_HOST)/$(PROJECT_NAME)-nginx
