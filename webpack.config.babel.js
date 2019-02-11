@@ -15,7 +15,7 @@ export default (_env, { mode }) => {
     output: {
       path: resolve('./public/static'),
       filename: '[name].[hash:7].js',
-      publicPath: '/static',
+      publicPath: '/static/',
     },
     module: {
       rules: [
