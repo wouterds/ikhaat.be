@@ -1,7 +1,7 @@
 {
   "author": "Wouter De Schuyter <wouter.de.schuyter@gmail.com>",
   "scripts": {
-    "dev": "./node_modules/.bin/webpack",
+    "dev": "./node_modules/.bin/webpack --watch",
     "build": "./node_modules/.bin/webpack -p"
   },
   "dependencies": {
