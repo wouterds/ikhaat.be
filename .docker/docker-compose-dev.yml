@@ -12,7 +12,9 @@ services:
       - ./..:/code
 
   php-fpm:
-    build: php-fpm
+    build:
+      context: ./..
+      dockerfile: ./.docker/php-fpm/Dockerfile
     env_file:
       - ./../.env
     volumes:
