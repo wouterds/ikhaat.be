@@ -33,7 +33,7 @@ node_modules: package.json
 dependencies: vendor node_modules
 
 .build-app: dependencies
-	docker run --rm --volume=$(PWD):/code -w=/code node:9-slim ./node_modules/.bin/gulp
+	docker run --rm --volume=$(PWD):/code -w=/code node:9-slim npm run build
 	touch .build-app
 
 .build-nginx: $(DOCKERFILE_NGINX)
