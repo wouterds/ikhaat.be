@@ -1,6 +1,9 @@
 FROM arm32v6/php:7.3-fpm-alpine
 LABEL maintainer="Wouter De Schuyter <wouter.de.schuyter@gmail.com>"
 
+# Qemu support
+COPY ./qemu-arm-static /usr/bin/qemu-arm-static
+
 # Install GD extension
 RUN apk add --no-cache \
       freetype-dev libpng-dev libjpeg-turbo-dev \
@@ -18,3 +21,6 @@ COPY ./public/index.php /code/public/index.php
 COPY ./src /code/src
 COPY ./resources /code/resources
 COPY ./vendor /code/vendor
+
+# Remove qemu binary
+RUN rm /usr/bin/qemu-arm-static
