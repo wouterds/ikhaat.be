@@ -28,14 +28,7 @@ export default (_env, { mode }) => {
           test: /\.scss$/,
           use: [
             MiniCssExtractPlugin.loader,
-            {
-              loader: 'css-loader',
-              options: {
-                modules: true,
-                importLoaders: true,
-                localIdentName: isProduction ? '[hash:7]' : '[name]-[local]-[hash:7]',
-              },
-            },
+            'css-loader',
             {
               loader: 'postcss-loader',
               options: {
