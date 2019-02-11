@@ -8,7 +8,11 @@ services:
       - LETSENCRYPT_EMAIL=wouter.de.schuyter@gmail.com
     networks:
       - default
-      - nginxproxy_default
+      - webproxy
+    logging:
+      options:
+        max-size: 2m
+        max-file: '5'
 
   php-fpm:
     image: docker.wouterdeschuyter.be/ikhaat-website-php-fpm
@@ -17,7 +21,14 @@ services:
       - ./.env
     volumes:
       - ./.env:/code/.env:ro
+    networks:
+      - default
+      - webproxy
+    logging:
+      options:
+        max-size: 2m
+        max-file: '5'
 
 networks:
-  nginxproxy_default:
+  webproxy:
     external: true
