@@ -63,3 +63,13 @@ push: tag
 push-latest: push
 	docker push $(TAG_NGINX):latest
 	docker push $(TAG_PHP_FPM):latest
+
+deploy:
+	ssh ${DEPLOY_USER}@${DEPLOY_SERVER} "mkdir -p ${DEPLOY_LOCATION}"
+
+	scp ./.docker/docker-compose.yml ${DEPLOY_USER}@${DEPLOY_SERVER}:${DEPLOY_LOCATION}/docker-compose.yml
+	scp ./.docker/docker-compose-prod.yml ${DEPLOY_USER}@${DEPLOY_SERVER}:${DEPLOY_LOCATION}/docker-compose-prod.yml
+	scp ./.env.example ${DEPLOY_USER}@${DEPLOY_SERVER}:${DEPLOY_LOCATION}/.env
+
+	ssh ${DEPLOY_USER}@${DEPLOY_SERVER} "cd ${DEPLOY_LOCATION}; docker-compose -f docker-compose.yml -f docker-compose-prod.yml pull"
+	ssh ${DEPLOY_USER}@${DEPLOY_SERVER} "cd ${DEPLOY_LOCATION}; docker-compose -f docker-compose.yml -f docker-compose-prod.yml up -d"
