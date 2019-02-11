@@ -1,12 +1,13 @@
 import { resolve } from 'path';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 
 export default (_env, { mode }) => {
   const isProduction = mode === 'production';
 
   return {
     resolve: {
-      extensions: ['.js']
+      extensions: ['.js', '.scss']
     },
     entry: {
       app: './resources/assets/scripts/app.js',
@@ -24,9 +25,9 @@ export default (_env, { mode }) => {
           loader: 'babel-loader',
         },
         {
-          test: /\.css$/,
-          loaders: [
-            'style-loader',
+          test: /\.scss$/,
+          use: [
+            MiniCssExtractPlugin.loader,
             {
               loader: 'css-loader',
               options: {
@@ -41,7 +42,7 @@ export default (_env, { mode }) => {
                 plugins: () => [
                   require('postcss-pseudoelements')(),
                   require('postcss-import')({
-                    path: 'src/styles',
+                    path: './resources/assets/styles',
                   }),
                   require('postcss-mixins')(),
                   require('postcss-preset-env')({
@@ -84,6 +85,9 @@ export default (_env, { mode }) => {
     },
     devtool: isProduction === false ? 'source-map' : undefined,
     plugins: [
+      new MiniCssExtractPlugin({
+        filename: '[name].[hash:7].css',
+      }),
       new HtmlWebpackPlugin({
         filename: resolve('./resources/views/_base.html.twig'),
         template: './resources/views/_base.template.html.twig',
