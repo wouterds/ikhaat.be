@@ -18,6 +18,7 @@ clean:
 	-rm -rf ./public/static
 	-rm -f ./.build-*
 	-rm -f ./composer.phar
+	-rm -f ./qemu-arm-static
 
 qemu-arm-static:
 	docker run --rm --privileged multiarch/qemu-user-static:register --reset
