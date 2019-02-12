@@ -1,6 +1,5 @@
 /.build-*
 /.env
-/qemu-arm-static
 /public/static
 /vendor
 /composer.phar

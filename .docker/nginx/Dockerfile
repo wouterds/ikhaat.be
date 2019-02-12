@@ -1,4 +1,4 @@
-FROM arm32v6/nginx:1.15-alpine
+FROM nginx:1.15-alpine
 LABEL maintainer="Wouter De Schuyter <wouter.de.schuyter@gmail.com>"
 
 # Nginx configuration file
