@@ -1,6 +1,9 @@
 FROM arm32v6/php:7.3-fpm-alpine
 LABEL maintainer="Wouter De Schuyter <wouter.de.schuyter@gmail.com>"
 
+# Add qemu bin
+COPY ./qemu-arm-static /usr/bin/qemu-arm-static
+
 # Install extensions
 RUN apk add --no-cache \
       freetype-dev libpng-dev libjpeg-turbo-dev \
@@ -12,6 +15,9 @@ RUN apk add --no-cache \
     && NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) \
     && docker-php-ext-install -j${NPROC} gd \
     && apk del freetype-dev libpng-dev libjpeg-turbo-dev
+
+# Remove qemu bin
+RUN rm /usr/bin/qemu-arm-static
 
 # Copy project
 COPY ./public/index.php /code/public/index.php
