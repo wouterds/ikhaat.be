@@ -18,3 +18,5 @@ COPY ./public/index.php /code/public/index.php
 COPY ./src /code/src
 COPY ./resources /code/resources
 COPY ./vendor /code/vendor
+
+WORKDIR /code
