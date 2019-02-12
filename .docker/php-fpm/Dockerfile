@@ -1,7 +1,7 @@
 FROM php:7.3-fpm-alpine
 LABEL maintainer="Wouter De Schuyter <wouter.de.schuyter@gmail.com>"
 
-# Install GD extension
+# Install extensions
 RUN apk add --no-cache \
       freetype-dev libpng-dev libjpeg-turbo-dev \
       freetype libpng libjpeg \
