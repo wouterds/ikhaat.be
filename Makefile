@@ -19,6 +19,11 @@ clean:
 	-rm -f ./.build-*
 	-rm -f ./composer.phar
 
+qemu-arm-static:
+	docker run --rm --privileged multiarch/qemu-user-static:register --reset
+	curl -OL https://github.com/multiarch/qemu-user-static/releases/download/v3.1.0-2/qemu-arm-static
+	chmod +x qemu-arm-static
+
 composer.phar:
 	docker run --rm --volume=$(PWD):/code -w=/code php:7.3-alpine php -r 'copy("https://getcomposer.org/installer", "./composer-setup.php");'
 	docker run --rm --volume=$(PWD):/code -w=/code php:7.3-alpine php ./composer-setup.php
@@ -44,7 +49,7 @@ dependencies: vendor node_modules
 	docker build $(BUILD_NO_CACHE) -f $(DOCKERFILE_PHP_FPM) -t $(TAG_PHP_FPM) .
 	touch .build-php-fpm
 
-build: .build-app .build-nginx .build-php-fpm
+build: qemu-arm-static .build-app .build-nginx .build-php-fpm
 
 tag: build
 	docker tag $(TAG_NGINX) $(TAG_NGINX):$(VERSION)
