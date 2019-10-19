@@ -1,7 +1,0 @@
-version: '2'
-
-services:
-  nginx:
-    environment:
-      - VIRTUAL_HOST=ikhaat.be
-      - LETSENCRYPT_HOST=ikhaat.be

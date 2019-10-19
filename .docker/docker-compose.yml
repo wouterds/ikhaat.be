@@ -5,6 +5,8 @@ services:
     image: docker.wouterdeschuyter.be/ikhaat-website-nginx
     restart: unless-stopped
     environment:
+      - VIRTUAL_HOST=ikhaat.be
+      - LETSENCRYPT_HOST=ikhaat.be
       - LETSENCRYPT_EMAIL=wouter.de.schuyter@gmail.com
     networks:
       - default
