@@ -2,7 +2,7 @@ version: '2'
 
 services:
   nginx:
-    image: docker.wouterdeschuyter.be/ikhaat-website-nginx
+    image: docker.pkg.github.com/wouterds/ikhaat.be/nginx
     restart: unless-stopped
     environment:
       - VIRTUAL_HOST=ikhaat.be
@@ -13,7 +13,7 @@ services:
       - webproxy
 
   php-fpm:
-    image: docker.wouterdeschuyter.be/ikhaat-website-php-fpm
+    image: docker.pkg.github.com/wouterds/ikhaat.be/php-fpm
     restart: unless-stopped
     networks:
       - default

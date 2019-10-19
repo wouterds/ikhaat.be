@@ -1,15 +1,15 @@
-all: tag
-
 PWD = $(shell pwd)
+VERSION = $(shell cat composer.json | grep "\"version\"" | sed -e 's/^.*: "\(.*\)".*/\1/')
 
-VERSION = 3.0.0
-PROJECT_NAME = ikhaat-website
-
-TAG_NGINX = $(DOCKER_REGISTRY_HOST)/$(PROJECT_NAME)-nginx
-TAG_PHP_FPM = $(DOCKER_REGISTRY_HOST)/$(PROJECT_NAME)-php-fpm
-
-DOCKERFILE_NGINX = ./.docker/nginx/Dockerfile
+DOCKER_COMPOSE = ./.docker/docker-compose.yml
 DOCKERFILE_PHP_FPM = ./.docker/php-fpm/Dockerfile
+DOCKERFILE_NGINX = ./.docker/nginx/Dockerfile
+
+TAG_PREFIX = docker.pkg.github.com/wouterds/ikhaat.be
+TAG_PHP_FPM = ${TAG_PREFIX}/php-fpm
+TAG_NGINX = ${TAG_PREFIX}/nginx
+
+all: build
 
 clean:
 	-rm -rf ./.version
@@ -20,56 +20,51 @@ clean:
 	-rm -f ./composer.phar
 	-rm -f ./qemu-arm-static
 
+composer.phar:
+	docker run --rm --volume=${PWD}:/code -w=/code php:7.3-alpine php -r 'copy("https://getcomposer.org/installer", "./composer-setup.php");'
+	docker run --rm --volume=${PWD}:/code -w=/code php:7.3-alpine php ./composer-setup.php
+	docker run --rm --volume=${PWD}:/code -w=/code php:7.3-alpine php -r 'unlink("./composer-setup.php");'
+
+vendor: composer.phar composer.json composer.lock
+	docker run --rm --volume=${PWD}:/code -w=/code php:7.3-alpine php ./composer.phar install --ignore-platform-reqs --prefer-dist --no-progress --optimize-autoloader
+
+node_modules: package.json
+	docker run --rm --volume=${PWD}:/code -w=/code node:12-slim npm install
+
+dependencies: vendor node_modules
+
 qemu-arm-static:
 	docker run --rm --privileged multiarch/qemu-user-static:register --reset
 	curl -OL https://github.com/multiarch/qemu-user-static/releases/download/v4.1.0-1/qemu-arm-static
 	chmod +x qemu-arm-static
 
-composer.phar:
-	docker run --rm --volume=$(PWD):/code -w=/code php:7.3-alpine php -r 'copy("https://getcomposer.org/installer", "./composer-setup.php");'
-	docker run --rm --volume=$(PWD):/code -w=/code php:7.3-alpine php ./composer-setup.php
-	docker run --rm --volume=$(PWD):/code -w=/code php:7.3-alpine php -r 'unlink("./composer-setup.php");'
-
-vendor: composer.phar composer.json composer.lock
-	docker run --rm --volume=$(PWD):/code -w=/code php:7.3-alpine php ./composer.phar install --ignore-platform-reqs --prefer-dist --no-progress --optimize-autoloader
-
-node_modules: package.json
-	docker run --rm --volume=$(PWD):/code -w=/code node:9-slim npm install
-
-dependencies: vendor node_modules
-
 .build-app: dependencies
-	docker run --rm --volume=$(PWD):/code -w=/code node:9-slim npm run build
+	docker run --rm --volume=${PWD}:/code -w=/code node:12-slim npm run build
 	touch .build-app
 
-.build-nginx: $(DOCKERFILE_NGINX)
-	docker build $(BUILD_NO_CACHE) -f $(DOCKERFILE_NGINX) -t $(TAG_NGINX) .
+.build-nginx: ${DOCKERFILE_NGINX}
+	docker build -f ${DOCKERFILE_NGINX} -t ${TAG_NGINX} .
 	touch .build-nginx
 
-.build-php-fpm: $(DOCKERFILE_PHP_FPM)
-	docker build $(BUILD_NO_CACHE) -f $(DOCKERFILE_PHP_FPM) -t $(TAG_PHP_FPM) .
+.build-php-fpm: qemu-arm-static .build-app ${DOCKERFILE_PHP_FPM}
+	docker build --build-arg URL=${URL} -f ${DOCKERFILE_PHP_FPM} -t ${TAG_PHP_FPM} .
 	touch .build-php-fpm
 
-build: qemu-arm-static .build-app .build-nginx .build-php-fpm
+build: .build-php-fpm .build-nginx
+	docker tag ${TAG_PHP_FPM} ${TAG_PHP_FPM}:${VERSION}
+	docker tag ${TAG_NGINX} ${TAG_NGINX}:${VERSION}
 
-tag: build
-	docker tag $(TAG_NGINX) $(TAG_NGINX):$(VERSION)
-	docker tag $(TAG_PHP_FPM) $(TAG_PHP_FPM):$(VERSION)
+docker-login:
+	docker login docker.pkg.github.com -u wouterds -p ${GITHUB_TOKEN}
 
-push: tag
-	docker push $(TAG_NGINX):$(VERSION)
-	docker push $(TAG_PHP_FPM):$(VERSION)
-
-push-latest: push
-	docker push $(TAG_NGINX):latest
-	docker push $(TAG_PHP_FPM):latest
+push: docker-login build
+	docker push ${TAG_PHP_FPM}
+	docker push ${TAG_PHP_FPM}:${VERSION}
+	docker push ${TAG_NGINX}
+	docker push ${TAG_NGINX}:${VERSION}
 
 deploy:
-	ssh ${DEPLOY_USER}@${DEPLOY_SERVER} "mkdir -p ${DEPLOY_LOCATION}"
-
-	scp ./.docker/docker-compose.yml ${DEPLOY_USER}@${DEPLOY_SERVER}:${DEPLOY_LOCATION}/docker-compose.yml
-	scp ./.docker/docker-compose-prod.yml ${DEPLOY_USER}@${DEPLOY_SERVER}:${DEPLOY_LOCATION}/docker-compose-prod.yml
-	scp ./.env.example ${DEPLOY_USER}@${DEPLOY_SERVER}:${DEPLOY_LOCATION}/.env
-
-	ssh ${DEPLOY_USER}@${DEPLOY_SERVER} "cd ${DEPLOY_LOCATION}; docker-compose -f docker-compose.yml -f docker-compose-prod.yml pull"
-	ssh ${DEPLOY_USER}@${DEPLOY_SERVER} "cd ${DEPLOY_LOCATION}; docker-compose -f docker-compose.yml -f docker-compose-prod.yml up -d"
+	ssh ${DEPLOY_USER}@${DEPLOY_HOST} "mkdir -p ${DEPLOY_PATH}"
+	scp ${DOCKER_COMPOSE} ${DEPLOY_USER}@${DEPLOY_HOST}:${DEPLOY_PATH}/docker-compose.yml
+	ssh ${DEPLOY_USER}@${DEPLOY_HOST} "cd ${DEPLOY_PATH}; docker-compose pull"
+	ssh ${DEPLOY_USER}@${DEPLOY_HOST} "cd ${DEPLOY_PATH}; docker-compose up -d"

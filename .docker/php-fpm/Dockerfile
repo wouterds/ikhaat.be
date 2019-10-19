@@ -25,4 +25,7 @@ COPY ./src /code/src
 COPY ./resources /code/resources
 COPY ./vendor /code/vendor
 
+ARG URL
+ENV URL=${URL}
+
 WORKDIR /code

@@ -1,0 +1,35 @@
+name: ci
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      ENV: production
+      URL: ${{ secrets.PRODUCTION_URL }}
+      DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+      DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+      DEPLOY_PATH: ${{ secrets.DEPLOY_PATH }}
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v1
+    - name: Dependencies
+      run: make node_modules
+    - name: Build
+      run: make build
+    - name: Push images
+      run: make push
+    - name: 'SSH: configure agent'
+      uses: webfactory/ssh-agent@v0.1.1
+      with:
+        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+    - name: 'SSH: trust host'
+      run: for ip in $(dig @1.1.1.1 ${DEPLOY_HOST} +short); do ssh-keyscan ${DEPLOY_HOST},$ip; ssh-keyscan $ip; done 2>/dev/null >> ~/.ssh/known_hosts
+    - name: Deploy
+      run: make deploy
