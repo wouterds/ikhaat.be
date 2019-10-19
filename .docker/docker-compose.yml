@@ -9,10 +9,6 @@ services:
     networks:
       - default
       - webproxy
-    logging:
-      options:
-        max-size: 2m
-        max-file: '5'
 
   php-fpm:
     image: docker.wouterdeschuyter.be/ikhaat-website-php-fpm
@@ -24,10 +20,6 @@ services:
     networks:
       - default
       - webproxy
-    logging:
-      options:
-        max-size: 2m
-        max-file: '5'
 
 networks:
   webproxy:
