@@ -20,19 +20,6 @@ body {
   box-sizing: border-box;
 }
 
-div.social {
-  position: absolute;
-  left: 10px;
-  bottom: 10px;
-  display: inline-block;
-
-  iframe,
-  div {
-    vertical-align: top;
-    display: inline-block;
-  }
-}
-
 div.middle-container {
   vertical-align: middle;
   text-align: center;
