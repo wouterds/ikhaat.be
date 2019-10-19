@@ -23,9 +23,8 @@ class HomeHandler extends ViewHandler
     public function __invoke(Request $request, Response $response): Response
     {
         return $this->render($response, [
-            'title' => getenv('APP_NAME'),
-            'description' => getenv('APP_DESCRIPTION'),
-            'twitterAccount' => getenv('TWITTER_ACCOUNT'),
+            'title' => 'IK HAAT ALLES!',
+            'description' => 'EN IK BEN GEEN BOZE KABOUTER GVD!!!',
             'url' => getenv('APP_URL'),
         ]);
     }
