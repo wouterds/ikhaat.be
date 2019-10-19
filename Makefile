@@ -22,7 +22,7 @@ clean:
 
 qemu-arm-static:
 	docker run --rm --privileged multiarch/qemu-user-static:register --reset
-	curl -OL https://github.com/multiarch/qemu-user-static/releases/download/v3.1.0-2/qemu-arm-static
+	curl -OL https://github.com/multiarch/qemu-user-static/releases/download/v4.1.0-1/qemu-arm-static
 	chmod +x qemu-arm-static
 
 composer.phar:
