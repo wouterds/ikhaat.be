@@ -15,10 +15,6 @@ services:
   php-fpm:
     image: docker.wouterdeschuyter.be/ikhaat-website-php-fpm
     restart: unless-stopped
-    env_file:
-      - ./.env
-    volumes:
-      - ./.env:/code/.env:ro
     networks:
       - default
       - webproxy
