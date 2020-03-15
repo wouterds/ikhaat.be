@@ -13,6 +13,7 @@ services:
       - "traefik.http.routers.beikaat.rule=Host(`ikhaat.be`)"
       - "traefik.http.routers.beikaat.entrypoints=websecure"
       - "traefik.http.routers.beikaat.tls.certresolver=myhttpchallenge"
+    mem_limit: 8mb
     networks:
       - default
       - reverse-proxy
@@ -20,6 +21,7 @@ services:
   php-fpm:
     image: docker.wouterdeschuyter.be/ikhaat.be/php-fpm
     restart: unless-stopped
+    mem_limit: 32mb
     networks:
       - default
 
