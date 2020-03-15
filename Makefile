@@ -5,7 +5,7 @@ DOCKER_COMPOSE = ./.docker/docker-compose.yml
 DOCKERFILE_PHP_FPM = ./.docker/php-fpm/Dockerfile
 DOCKERFILE_NGINX = ./.docker/nginx/Dockerfile
 
-TAG_PREFIX = docker.pkg.github.com/wouterds/ikhaat.be
+TAG_PREFIX = docker.wouterdeschuyter.be/ikhaat.be
 TAG_PHP_FPM = ${TAG_PREFIX}/php-fpm
 TAG_NGINX = ${TAG_PREFIX}/nginx
 

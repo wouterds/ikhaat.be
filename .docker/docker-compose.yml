@@ -2,7 +2,7 @@ version: '2'
 
 services:
   nginx:
-    image: docker.pkg.github.com/wouterds/ikhaat.be/nginx
+    image: docker.wouterdeschuyter.be/ikhaat.be/nginx
     restart: unless-stopped
     labels:
       - "traefik.enable=true"
@@ -18,7 +18,7 @@ services:
       - reverse-proxy
 
   php-fpm:
-    image: docker.pkg.github.com/wouterds/ikhaat.be/php-fpm
+    image: docker.wouterdeschuyter.be/ikhaat.be/php-fpm
     restart: unless-stopped
     networks:
       - default
