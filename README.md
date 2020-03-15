@@ -1,6 +1,6 @@
 # ikhaat.be
 
-![ci](https://github.com/wouterds/wouterdeschuyter.be/workflows/ci/badge.svg)
+![ci](https://github.com/wouterds/ikhaat.be/workflows/ci/badge.svg)
 ![tag)](https://img.shields.io/github/tag/wouterds/ikhaat.be.svg)
 ![repo size](https://img.shields.io/github/repo-size/wouterds/ikhaat.be.svg)
 
