@@ -4,21 +4,25 @@ services:
   nginx:
     image: docker.pkg.github.com/wouterds/ikhaat.be/nginx
     restart: unless-stopped
-    environment:
-      - VIRTUAL_HOST=ikhaat.be
-      - LETSENCRYPT_HOST=ikhaat.be
-      - LETSENCRYPT_EMAIL=wouter.de.schuyter@gmail.com
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.middlewares.beikaat.redirectscheme.scheme=https"
+      - "traefik.http.routers.beikaat-http.rule=Host(`ikhaat.be`)"
+      - "traefik.http.routers.beikaat-http.entrypoints=web"
+      - "traefik.http.routers.beikaat-http.middlewares=beikaat"
+      - "traefik.http.routers.beikaat.rule=Host(`ikhaat.be`)"
+      - "traefik.http.routers.beikaat.entrypoints=websecure"
+      - "traefik.http.routers.beikaat.tls.certresolver=myhttpchallenge"
     networks:
       - default
-      - webproxy
+      - reverse-proxy
 
   php-fpm:
     image: docker.pkg.github.com/wouterds/ikhaat.be/php-fpm
     restart: unless-stopped
     networks:
       - default
-      - webproxy
 
 networks:
-  webproxy:
+  reverse-proxy:
     external: true
